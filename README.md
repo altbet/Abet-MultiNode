@@ -21,7 +21,7 @@ Deploy your next app in seconds. Get $100 in cloud credits from DigitalOcean usi
 
 **NOTE on the VPS choice for starters**
 
-**Vultr** is highly recommended for this kind of setup. I created an [easy step-by-step guide for the VPS provider vultr](/docs/masternode_vps.md) that will guide you through the hardest parts.
+**Vultr** is highly recommended for this kind of setup. I created an [easy step-by-step guide for the VPS provider vultr](/docs/vultr-masternode_vps.md) that will guide you through the hardest parts.
 
 ---
 
