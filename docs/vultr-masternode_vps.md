@@ -21,7 +21,10 @@ If you are not already aware, visit the project site and join the slack. The web
 I will use vultr for my instructions, but in practice and with a bit of tuning any hoster that gives you multiple free IPv6 addresses. Register / login with vultr.
 
 Feel free to use my reflink to signup and receive a bonus w/ vultr:
-<a href="https://www.vultr.com/?ref=6903922"><img src="https://www.vultr.com/media/banner_2.png" width="468" height="60"></a>
+<a href="https://www.vultr.com/?ref=7424168"><img src="https://www.vultr.com/media/banner_2.png" width="468" height="60"></a>
+
+If you wish to use DigitalOcean you can use this referal link but the following guide will only go over Vultr.
+Deploy your next app in seconds. Get $100 in cloud credits from DigitalOcean using my link: <a href="https://m.do.co/t/a3f23a15f9af">"<img src="https://blog.microdreamit.com/wp-content/uploads/2019/08/Digital-Ocean-Credit.gif" width="468" height="60"></a>
 
 It's also great that you can use Bitcoin to pay!
 
@@ -81,7 +84,7 @@ Login to your newly installed node as "root".
 Clone this git repository first:
 
 ```
-git clone https://github.com/masternodes/vps.git && cd vps
+git clone https://github.com/MotoAcidic/Abet-MultiNode.git && cd vps
 ```
 
 
@@ -90,7 +93,7 @@ git clone https://github.com/masternodes/vps.git && cd vps
 Use the *./install.sh* script with the desired crypto and masternode count as parameters, e.g. to install 4 PIVX masternodes:
 
 ```
-./install.sh -p pivx -c 4
+./install.sh -p abet -c 4
 ```
 
 The script downloads, compiles and configures the system now. This will usually take between 5-15 minutes.
@@ -124,21 +127,21 @@ In 99% you can use the generated settings as is. The only value you MUST change 
 
 A script to enable masternode start at boot has been created at */usr/local/bin/activate_masternodes_${CODENAME}.sh* for your convenience. There is exactly one script per installed masternode crypto.
 
-Run it after you finished configuration, e.g. after a PIVX installation do.
+Run it after you finished configuration, e.g. after a Abet installation do.
 
 ```
-/usr/local/bin/activate_masternodes_pivx
+/usr/local/bin/activate_masternodes_abet
 ```     
 
 ## Last step, the controller
 
 To activate the new nodes in your _local_ (not the VPS) controller wallet, add the bind address entries with port to a file called "masternode.conf" as usual.
 
-     MN1 [2002:470:1111:1a4:51]:51472 KEY TX OUTPUT
-     MN2 [2003:470:1111:1a4:52]:51472 KEY TX OUTPUT
-     MN3 [2003:470:1111:1a4:53]:51472 KEY TX OUTPUT
+     MN1 [2002:470:1111:1a4:51]:8322 KEY TX OUTPUT
+     MN2 [2003:470:1111:1a4:52]:8322 KEY TX OUTPUT
+     MN3 [2003:470:1111:1a4:53]:8322 KEY TX OUTPUT
 
-To make this a bit easier for large installations, i implemented a small gimmick in the newest version. Now after the script has run, a partial of the "masternode.conf" file is generated and placed on the VPS eg for XIOS at "/tmp/pivx_masternode.conf"
+To make this a bit easier for large installations, i implemented a small gimmick in the newest version. Now after the script has run, a partial of the "masternode.conf" file is generated and placed on the VPS eg for XIOS at "/tmp/abet_masternode.conf"
 
 So you can take the contents from there and paste it into your local controller-wallets masternode.conf all that you need to add is the relevant pieces from "masternode outputs"
 
@@ -151,26 +154,30 @@ You get the idea, another step to a fully automated setup... ;-)
 If you want to check the status of your masternode, the best way is currently running the cli e.g. via
 
 ```
-/usr/local/bin/mue-cli -conf=/etc/masternodes/mue_n1.conf getinfo
+/usr/local/bin/abet-cli -conf=/etc/masternodes/abet_n1.conf getinfo
 
 {
-  "version": 1000302,
-  "protocolversion": 70701,
+  "version": 3040000,
+  "protocolversion": 70917,
+  "services": "NETWORK/BLOOM/",
   "walletversion": 61000,
   "balance": 0.00000000,
-  "privatesend_balance": 0.00000000,
-  "blocks": 209481,
+  "zerocoinbalance": 0.00000000,
+  "blocks": 9252,
   "timeoffset": 0,
-  "connections": 5,
+  "connections": 129,
   "proxy": "",
-  "difficulty": 42882.54964804553,
+  "difficulty": 22974.76067187333,
   "testnet": false,
-  "keypoololdest": 1511380627,
+  "moneysupply": 2007131.13233737,
+  "keypoololdest": 1576539264,
   "keypoolsize": 1001,
   "paytxfee": 0.00000000,
   "relayfee": 0.00010000,
+  "staking status": "Staking Not Active",
   "errors": ""
 }
+
 ```
 
 
@@ -185,5 +192,5 @@ If my scripts work for you, please send some crypto my way here:
 Send BTC to:
 
 ```
-BTC  1JfM1MU6Ro8e9VBiYzSTvYbzJUyLiupcNr
+BTC  19U8Jgyb38XnbGyQq3SHXS614pmLbvwKeZ
 ```
